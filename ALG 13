@@ -1,0 +1,36 @@
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	var input string
+	fmt.Print("Digite uma string: ")
+	fmt.Scan(&input)
+
+	previous := -1
+	isAscending := true
+
+	for _, char := range input {
+		num, err := strconv.Atoi(string(char))
+		if err != nil {
+			isAscending = false
+			break
+		}
+
+		if previous != -1 && num <= previous {
+			isAscending = false
+			break
+		}
+
+		previous = num
+	}
+
+	if isAscending {
+		fmt.Println("A string é uma sequência numérica crescente.")
+	} else {
+		fmt.Println("A string não é uma sequência numérica crescente.")
+	}
+}
