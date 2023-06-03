@@ -1,0 +1,21 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	var input string
+	fmt.Print("Digite uma string: ")
+	fmt.Scan(&input)
+
+	unique := ""
+	for _, char := range input {
+		if strings.Count(input, string(char)) == 1 {
+			unique += string(char)
+		}
+	}
+
+	fmt.Println("Letras únicas na string:", unique)
+}
