@@ -1,0 +1,28 @@
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	var str, pattern string
+	fmt.Print("Digite uma string: ")
+	fmt.Scan(&str)
+	fmt.Print("Digite um padrão: ")
+	fmt.Scan(&pattern)
+
+	indices := []int{}
+	startIndex := 0
+
+	for {
+		index := strings.Index(str[startIndex:], pattern)
+		if index == -1 {
+			break
+		}
+		indices = append(indices, startIndex+index)
+		startIndex += index + 1
+	}
+
+	fmt.Println("Índices em que o padrão ocorre na string:", indices)
+}
